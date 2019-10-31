@@ -12,6 +12,8 @@ using TeduCoreApp.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using TeduCoreApp.Data.EF;
+using TeduCoreApp.Data.Entities;
 
 namespace TeduCoreApp
 {
@@ -27,17 +29,32 @@ namespace TeduCoreApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+            services.AddDbContext<AppDbContext>(options =>
+                options.UseSqlServer( Configuration.GetConnectionString("DefaultConnection"),
+                o=> o.MigrationsAssembly("TeduCoreApp.Data.EF")));
+
+           // services.AddDefaultIdentity<AppUser>(options => options.SignIn.RequireConfirmedAccount = true)
+             //   .AddEntityFrameworkStores<AppDbContext>();
+
+            services.AddIdentity<AppUser, AppRole>()
+                .AddEntityFrameworkStores<AppDbContext>()
+                .AddDefaultTokenProviders();
+
+            // Add AppUser & AppRole
+            services.AddScoped<UserManager<AppUser>,UserManager<AppUser>>();
+            services.AddScoped<UserManager<AppRole>,UserManager<AppRole>>();
+
             services.AddControllersWithViews();
+
             services.AddRazorPages();
+
+            services.AddTransient<DbInitializer>();
+
+            services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, DbInitializer dbInitializer)
         {
             if (env.IsDevelopment())
             {
@@ -65,6 +82,8 @@ namespace TeduCoreApp
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
+
+            dbInitializer.Seed().Wait();
         }
     }
 }

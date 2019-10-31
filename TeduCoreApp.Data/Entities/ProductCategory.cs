@@ -15,7 +15,7 @@ namespace TeduCoreApp.Data.Entities
 
         public ProductCategory()
         {
-            Product = new List<Product>();
+            Products = new List<Product>();
         }
 
         [Required]
@@ -25,7 +25,7 @@ namespace TeduCoreApp.Data.Entities
         public string Description { get; set; }
 
         [Required]
-        public int ParentId { set; get; }
+        public int? ParentId { set; get; }
 
         [Column(TypeName = "nvarchar")]
         [Required]
@@ -61,6 +61,6 @@ namespace TeduCoreApp.Data.Entities
 
         public int OwnerId { set; get; }
 
-        public ICollection<Product> Product { set; get; }
+        public ICollection<Product> Products { set; get; }
     }
 }

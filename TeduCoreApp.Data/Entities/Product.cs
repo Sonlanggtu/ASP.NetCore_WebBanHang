@@ -38,8 +38,8 @@ namespace TeduCoreApp.Data.Entities
 
         public decimal? PromotionPrice { get; set; }
 
-        [Required]
-        public decimal OrginalPrice { get; set; }
+        [Required] 
+        public decimal OriginalPrice { get; set; }
 
         public int OwnerId { set; get; }
 
