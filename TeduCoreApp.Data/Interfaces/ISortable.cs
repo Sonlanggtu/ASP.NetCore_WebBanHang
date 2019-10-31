@@ -4,7 +4,7 @@ using System.Text;
 
 namespace TeduCoreApp.Data.Interfaces
 {
-    public interface ISortDelete
+    public interface ISortable
     {
         int SortOrder { set; get; }
     }

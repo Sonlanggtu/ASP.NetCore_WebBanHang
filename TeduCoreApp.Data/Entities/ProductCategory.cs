@@ -10,7 +10,7 @@ namespace TeduCoreApp.Data.Entities
 {
     [Table("ProductCategories")]
     public class ProductCategory : DomainEntity<int>, IDateTracking, IHasOwner<int>, IHasSeoMetaData,
-        IHasSoftDelete, ISortDelete, ISwitchable
+        IHasSoftDelete, ISortable, ISwitchable
     {
 
         public ProductCategory()
@@ -39,7 +39,7 @@ namespace TeduCoreApp.Data.Entities
 
         public bool? HomeFlag { get; set; }
 
-        public DateTime DateCreate { set; get; }
+        public DateTime DateCreated { set; get; }
 
         public DateTime DateModified { set; get; }
 

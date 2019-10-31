@@ -24,6 +24,8 @@ namespace TeduCoreApp.Data.Entities
         [Column(TypeName = "varchar")]
         public string Alias { get; set; }
 
+        public string Description { get; set; }
+
         public int? HomeOrder { get; set; }
 
         public string Image { get; set; }
@@ -31,7 +33,7 @@ namespace TeduCoreApp.Data.Entities
         public string Content { get; set; }
 
         [Required]
-       // [DefaultValue(0)]
+        // [DefaultValue(0)]
         public decimal Price { get; set; }
 
         public decimal? PromotionPrice { get; set; }
@@ -55,7 +57,7 @@ namespace TeduCoreApp.Data.Entities
 
         public Status Status { set; get; }
 
-        public DateTime DateCreate { set; get; }
+        public DateTime DateCreated { set; get; }
 
         public DateTime DateModified { set; get; }
 
@@ -70,5 +72,6 @@ namespace TeduCoreApp.Data.Entities
 
         [StringLength(255)]
         public string SeoDescription { set; get; }
+       
     }
 }

@@ -7,17 +7,15 @@ using TeduCoreApp.Infrastructure.SharedKernel;
 
 namespace TeduCoreApp.Data.Entities
 {
-    [Table("ProductTags")]
-    public class ProductTag : DomainEntity<int>
+    [Table("BlogTags")]
+    public class BlogTag : DomainEntity<int>
     {
-        public int ProductId { get; set; }
+        public int BlogId { set; get; }
 
-        [Column(TypeName = "nvarchar")]
-        [StringLength(50)]
-        public int TagId { set; get; }
+        public string TagId { set; get; }
 
-        [ForeignKey("ProductId")]
-         public virtual Product Product { set; get; }
+        [ForeignKey("BlogId")]
+        public virtual Blog Blog { set; get; }
 
         [ForeignKey("TagId")]
         public virtual Tag Tag { set; get; }
