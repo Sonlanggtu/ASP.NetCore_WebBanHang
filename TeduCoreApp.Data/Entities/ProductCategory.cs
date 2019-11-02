@@ -18,6 +18,24 @@ namespace TeduCoreApp.Data.Entities
             Products = new List<Product>();
         }
 
+        public ProductCategory(string name, string description, int? parentId, int? homeOrder,
+            string image, bool? homeFlag, int sortOrder, Status status, string seoPageTitle, string seoAlias,
+            string seoKeywords, string seoDescription)
+        {
+            Name = name;
+            Description = description;
+            ParentId = parentId;
+            HomeOrder = homeOrder;
+            Image = image;
+            HomeFlag = homeFlag;
+            SortOrder = sortOrder;
+            Status = status;
+            SeoPageTitle = seoPageTitle;
+            SeoAlias = seoAlias;
+            SeoKeywords = seoKeywords;
+            SeoDescription = seoDescription;
+        }
+
         [Required]
         [StringLength(255)]
         public string Name { get; set; }
@@ -28,14 +46,13 @@ namespace TeduCoreApp.Data.Entities
         public int? ParentId { set; get; }
 
         [Column(TypeName = "nvarchar")]
-        [Required]
-        public string Alias { get; set; }
 
         public int CategoryId { get; set; }
 
         public string Image { get; set; }
 
-    //    public bool? HotFlag { get; set; }
+        //    public bool? HotFlag { get; set; }
+        public int? HomeOrder { get; set; }
 
         public bool? HomeFlag { get; set; }
 
@@ -49,6 +66,7 @@ namespace TeduCoreApp.Data.Entities
 
         [Column(TypeName = "varchar")]
         [StringLength(255)]
+        [Required]
         public string SeoAlias { set; get; }
 
         public string SeoKeywords { set; get; }
@@ -61,6 +79,6 @@ namespace TeduCoreApp.Data.Entities
 
         public int OwnerId { set; get; }
 
-        public ICollection<Product> Products { set; get; }
+        public virtual ICollection<Product> Products { set; get; }
     }
 }

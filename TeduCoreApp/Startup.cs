@@ -14,6 +14,11 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using TeduCoreApp.Data.EF;
 using TeduCoreApp.Data.Entities;
+using AutoMapper;
+using TeduCoreApp.Data.IRepositories;
+using TeduCoreApp.Application.Interfaces;
+using TeduCoreApp.Data.EF.Repositories;
+using TeduCoreApp.Application.Implementation;
 
 namespace TeduCoreApp
 {
@@ -43,6 +48,16 @@ namespace TeduCoreApp
             // Add AppUser & AppRole
             services.AddScoped<UserManager<AppUser>,UserManager<AppUser>>();
             services.AddScoped<UserManager<AppRole>,UserManager<AppRole>>();
+
+            // Add AutoMapper
+            services.AddSingleton(Mapper.Configuration);
+            services.AddScoped<IMapper>(sp => new Mapper(sp.GetRequiredService<AutoMapper.IConfigurationProvider>(), sp.GetServices));
+
+            // Add Service && Repository
+            services.AddTransient<IProductCategoryRepository, ProductCategoryRepository>();
+            services.AddTransient<IProductCategoryService, ProductCategoryService>();
+
+
 
             services.AddControllersWithViews();
 
