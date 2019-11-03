@@ -8,12 +8,13 @@ using TeduCoreApp.Data.Entities;
 
 namespace TeduCoreApp.Data.EF.Configurations
 {
-    class AdvertistmentPositionConfiguration : DbEntityConfiguration<AdvertistmentPosition>
-
+    public class AdvertistmentPositionConfiguration : DbEntityConfiguration<AdvertistmentPosition>
     {
         public override void Configure(EntityTypeBuilder<AdvertistmentPosition> entity)
         {
-            entity.Property(c => c.Id).HasMaxLength(20).IsRequired();
+            entity.Property(c => c.Id).IsUnicode(false).HasMaxLength(20).IsRequired();
+            entity.Property(c => c.PageId).IsUnicode(false).HasMaxLength(20).IsRequired();
+            // etc.
         }
     }
 }

@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using TeduCoreApp.Data.Entities;
 using TeduCoreApp.Data.IRepositories;
 
 namespace TeduCoreApp.Data.EF.Repositories
 {
-   public class ProductCategoryRepository : EFRepository<ProductCategory, int>, IProductCategoryRepository
+    public class ProductCategoryRepository : EFRepository<ProductCategory, int>, IProductCategoryRepository
     {
         private readonly AppDbContext _context;
 

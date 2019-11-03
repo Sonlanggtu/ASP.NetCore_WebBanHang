@@ -1,7 +1,4 @@
 ﻿using AutoMapper;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace TeduCoreApp.Application.AutoMapper
 {
@@ -14,6 +11,6 @@ namespace TeduCoreApp.Application.AutoMapper
                 cfg.AddProfile(new DomainToViewModelMappingProfile());
                 cfg.AddProfile(new ViewModelToDomainMappingProfile());
             });
-        } 
+        }
     }
 }

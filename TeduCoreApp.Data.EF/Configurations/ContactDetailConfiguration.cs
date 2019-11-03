@@ -12,7 +12,7 @@ namespace TeduCoreApp.Data.EF.Configurations
         public override void Configure(EntityTypeBuilder<Contact> entity)
         {
             entity.HasKey(c => c.Id);
-            entity.Property(c => c.Id).HasMaxLength(255).IsRequired();
+            entity.Property(c => c.Id).HasMaxLength(255).IsRequired().IsUnicode(false);
             // etc.
         }
     }

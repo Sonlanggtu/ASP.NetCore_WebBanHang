@@ -11,7 +11,7 @@ namespace TeduCoreApp.Data.EF.Configurations
     {
         public override void Configure(EntityTypeBuilder<SystemConfig> entity)
         {
-            entity.Property(e => e.Id).HasMaxLength(255).IsRequired();
+            entity.Property(e => e.Id).HasMaxLength(50).IsRequired().IsUnicode(false);
         }
     }
 }

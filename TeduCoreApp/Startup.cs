@@ -1,24 +1,19 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using TeduCoreApp.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using TeduCoreApp.Data.EF;
-using TeduCoreApp.Data.Entities;
-using AutoMapper;
-using TeduCoreApp.Data.IRepositories;
-using TeduCoreApp.Application.Interfaces;
-using TeduCoreApp.Data.EF.Repositories;
+using System;
 using TeduCoreApp.Application.Implementation;
+using TeduCoreApp.Application.Interfaces;
+using TeduCoreApp.Data.EF;
+using TeduCoreApp.Data.EF.Repositories;
+using TeduCoreApp.Data.Entities;
+using TeduCoreApp.Data.IRepositories;
+using TeduCoreApp.Infrastructure.Interfaces;
 
 namespace TeduCoreApp
 {
@@ -35,27 +30,47 @@ namespace TeduCoreApp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<AppDbContext>(options =>
-                options.UseSqlServer( Configuration.GetConnectionString("DefaultConnection"),
-                o=> o.MigrationsAssembly("TeduCoreApp.Data.EF")));
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"),
+                o => o.MigrationsAssembly("TeduCoreApp.Data.EF")));
 
-           // services.AddDefaultIdentity<AppUser>(options => options.SignIn.RequireConfirmedAccount = true)
-             //   .AddEntityFrameworkStores<AppDbContext>();
+          //  services.AddDefaultIdentity<AppUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            //  .AddEntityFrameworkStores<AppDbContext>();
 
-            services.AddIdentity<AppUser, AppRole>()
+             services.AddIdentity<AppUser, AppRole>()
                 .AddEntityFrameworkStores<AppDbContext>()
                 .AddDefaultTokenProviders();
 
+            // Config Identity
+            services.Configure<IdentityOptions>(options =>
+            {
+                // Password setting
+                options.Password.RequireDigit = true;
+                options.Password.RequiredLength = 6;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireUppercase = false;
+                options.Password.RequireLowercase = false;
+                // Lock setting
+
+                options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromHours(6);
+                options.Lockout.MaxFailedAccessAttempts = 10;
+
+                //User setting
+                options.User.RequireUniqueEmail = true;
+            });
+
             // Add AppUser & AppRole
-            services.AddScoped<UserManager<AppUser>,UserManager<AppUser>>();
-            services.AddScoped<UserManager<AppRole>,UserManager<AppRole>>();
+            services.AddScoped<UserManager<AppUser>, UserManager<AppUser>>();
+            services.AddScoped<RoleManager<AppRole>, RoleManager<AppRole>>();
 
             // Add AutoMapper
+            services.AddAutoMapper();
             services.AddSingleton(Mapper.Configuration);
             services.AddScoped<IMapper>(sp => new Mapper(sp.GetRequiredService<AutoMapper.IConfigurationProvider>(), sp.GetServices));
 
             // Add Service && Repository
-            services.AddTransient<IProductCategoryRepository, ProductCategoryRepository>();
-            services.AddTransient<IProductCategoryService, ProductCategoryService>();
+            services.AddTransient<IUnitOfWork, EFUnitOfWork>();
+            //services.AddTransient<IProductCategoryRepository, ProductCategoryRepository>();
+            //services.AddTransient<IProductCategoryService, ProductCategoryService>();
 
 
 
@@ -69,7 +84,7 @@ namespace TeduCoreApp
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, DbInitializer dbInitializer)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -98,7 +113,6 @@ namespace TeduCoreApp
                 endpoints.MapRazorPages();
             });
 
-            dbInitializer.Seed().Wait();
         }
     }
 }

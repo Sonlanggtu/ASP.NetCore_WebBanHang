@@ -8,12 +8,11 @@ using TeduCoreApp.Data.Entities;
 
 namespace TeduCoreApp.Data.EF.Configurations
 {
-    public class FooterConfiguration : DbEntityConfiguration<Footer>
+    public class PermissionConfiguration : DbEntityConfiguration<Permission>
     {
-        public override void Configure(EntityTypeBuilder<Footer> entity)
+        public override void Configure(EntityTypeBuilder<Permission> entity)
         {
-            entity.HasKey(c => c.Id);
-            entity.Property(c => c.Id).HasMaxLength(255).IsRequired().IsUnicode(false);
+            entity.Property(c => c.FunctionId).IsRequired().HasMaxLength(128).IsUnicode(false);
             // etc.
         }
     }

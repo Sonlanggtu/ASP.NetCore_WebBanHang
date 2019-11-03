@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
 using System.Collections.Generic;
@@ -8,11 +8,11 @@ using TeduCoreApp.Data.Entities;
 
 namespace TeduCoreApp.Data.EF.Configurations
 {
-    public class ProductTagConfiguration : DbEntityConfiguration<ProductTag>
+    public class AdvertistmentPageConfiguration : DbEntityConfiguration<AdvertistmentPage>
     {
-        public override void Configure(EntityTypeBuilder<ProductTag> entity)
+        public override void Configure(EntityTypeBuilder<AdvertistmentPage> entity)
         {
-            entity.Property(c => c.TagId).HasMaxLength(50).IsRequired().IsUnicode(false);
+            entity.Property(c => c.Id).IsUnicode(false).HasMaxLength(20).IsRequired();
             // etc.
         }
     }

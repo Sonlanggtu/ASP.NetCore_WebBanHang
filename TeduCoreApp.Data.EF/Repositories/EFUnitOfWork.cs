@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using TeduCoreApp.Infrastructure.Interfaces;
+﻿using TeduCoreApp.Infrastructure.Interfaces;
 
 namespace TeduCoreApp.Data.EF
 {

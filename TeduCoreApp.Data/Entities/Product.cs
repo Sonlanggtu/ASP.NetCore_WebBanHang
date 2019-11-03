@@ -62,7 +62,7 @@ namespace TeduCoreApp.Data.Entities
 
         [StringLength(255)]
         [Required]
-        [Column(TypeName = "varchar")]
+        [Column(TypeName = "varchar(255)")]
         public string SeoAlias { set; get; }
 
         [StringLength(255)]

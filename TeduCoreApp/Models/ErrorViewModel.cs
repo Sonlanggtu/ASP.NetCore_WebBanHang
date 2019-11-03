@@ -1,5 +1,3 @@
-using System;
-
 namespace TeduCoreApp.Models
 {
     public class ErrorViewModel

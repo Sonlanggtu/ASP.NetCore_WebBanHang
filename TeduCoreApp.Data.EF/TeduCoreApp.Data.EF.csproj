@@ -1,8 +1,42 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.0</TargetFramework>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20191103022050_InitDatabase.cs" />
+    <Compile Remove="Migrations\20191103022050_InitDatabase.Designer.cs" />
+    <Compile Remove="Migrations\20191103022550_InitDatabase.cs" />
+    <Compile Remove="Migrations\20191103022550_InitDatabase.Designer.cs" />
+    <Compile Remove="Migrations\20191103022743_InitDatabase.cs" />
+    <Compile Remove="Migrations\20191103022743_InitDatabase.Designer.cs" />
+    <Compile Remove="Migrations\20191103022950_InitDatabase.cs" />
+    <Compile Remove="Migrations\20191103022950_InitDatabase.Designer.cs" />
+    <Compile Remove="Migrations\20191103023203_InitDatabase.cs" />
+    <Compile Remove="Migrations\20191103023203_InitDatabase.Designer.cs" />
+    <Compile Remove="Migrations\20191103023259_InitDatabase.cs" />
+    <Compile Remove="Migrations\20191103023259_InitDatabase.Designer.cs" />
+    <Compile Remove="Migrations\20191103023544_InitDatabase.cs" />
+    <Compile Remove="Migrations\20191103023544_InitDatabase.Designer.cs" />
+    <Compile Remove="Migrations\20191103023954_InitDatabase.cs" />
+    <Compile Remove="Migrations\20191103023954_InitDatabase.Designer.cs" />
+    <Compile Remove="Migrations\20191103024159_InitDatabase.cs" />
+    <Compile Remove="Migrations\20191103024159_InitDatabase.Designer.cs" />
+    <Compile Remove="Migrations\20191103024401_InitDatabase.cs" />
+    <Compile Remove="Migrations\20191103024401_InitDatabase.Designer.cs" />
+    <Compile Remove="Migrations\20191103024512_InitDatabase.cs" />
+    <Compile Remove="Migrations\20191103024512_InitDatabase.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="3.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="3.0.0" />
+  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\TeduCoreApp.Data\TeduCoreApp.Data.csproj" />

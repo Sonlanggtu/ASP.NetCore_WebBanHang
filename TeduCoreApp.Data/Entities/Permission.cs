@@ -12,10 +12,8 @@ namespace TeduCoreApp.Data.Entities
     {
         [StringLength(450)]
         [Required]
-        public string RoleId { get; set; }
+        public Guid RoleId { get; set; }
 
-        [StringLength(128)]
-        [Required]
         public string FunctionId { get; set; }
 
         public bool CanCreate { set; get; }

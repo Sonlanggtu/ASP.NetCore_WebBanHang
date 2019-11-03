@@ -12,9 +12,7 @@ namespace TeduCoreApp.Data.Entities
     {
         public int ProductId { get; set; }
 
-        [Column(TypeName = "nvarchar")]
-        [StringLength(50)]
-        public int TagId { set; get; }
+        public string TagId { set; get; }
 
         [ForeignKey("ProductId")]
          public virtual Product Product { set; get; }

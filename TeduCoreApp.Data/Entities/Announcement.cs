@@ -10,7 +10,7 @@ using TeduCoreApp.Infrastructure.SharedKernel;
 namespace TeduCoreApp.Data.Entities
 {
     [Table("Announcements")]
-    public class Announcement : DomainEntity<string>, ISwitchable, IDateTracking
+    public class Announcement : DomainEntity<int>, ISwitchable, IDateTracking
     {
         public Announcement()
         {
@@ -23,13 +23,7 @@ namespace TeduCoreApp.Data.Entities
 
         [StringLength(250)]
         public string Content { set; get; }
-
-        [StringLength(450)]
-        public string UserId { set; get; }
-
-        [ForeignKey("UserId")]
-        public virtual AppUser AppUser { get; set; }
-
+        
         public virtual ICollection<AnnouncementUser> AnnouncementUsers { get; set; }
 
         public DateTime DateCreated { set; get; }

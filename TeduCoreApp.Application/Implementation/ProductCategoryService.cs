@@ -3,7 +3,6 @@ using AutoMapper.QueryableExtensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using TeduCoreApp.Application.Interfaces;
 using TeduCoreApp.Application.ViewModels;
 using TeduCoreApp.Data.Entities;
@@ -21,7 +20,7 @@ namespace TeduCoreApp.Application.Implementation
         {
             _productCategoryRepository = productCategoryRepository;
             _unitOfWork = unitOfWork;
-            
+
         }
         public ProductCategoryViewModel Add(ProductCategoryViewModel productCategoryVm)
         {
@@ -44,7 +43,7 @@ namespace TeduCoreApp.Application.Implementation
         {
             if (!string.IsNullOrEmpty(keyword))
             {
-                return _productCategoryRepository.FindAll(x=> x.Name.Contains(keyword) || x.Description.Contains(keyword))                  
+                return _productCategoryRepository.FindAll(x => x.Name.Contains(keyword) || x.Description.Contains(keyword))
                     .OrderBy(x => x.ParentId)
                     .ProjectTo<ProductCategoryViewModel>().ToList();
             }
@@ -62,7 +61,7 @@ namespace TeduCoreApp.Application.Implementation
         public ProductCategoryViewModel GetById(int id)
         {
             return Mapper.Map<ProductCategory, ProductCategoryViewModel>(_productCategoryRepository.FindById(id));
-            
+
         }
 
         public List<ProductCategoryViewModel> GetHomeCategories(int top)

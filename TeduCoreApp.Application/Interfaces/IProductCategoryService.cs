@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using TeduCoreApp.Application.ViewModels;
 
 namespace TeduCoreApp.Application.Interfaces
@@ -22,7 +20,7 @@ namespace TeduCoreApp.Application.Interfaces
         ProductCategoryViewModel GetById(int id);
 
         void UpdateParentId(int sourceId, int targetId, Dictionary<int, int> items);
-        
+
         void ReOrder(int sourceId, int targetId);
 
         List<ProductCategoryViewModel> GetHomeCategories(int top);

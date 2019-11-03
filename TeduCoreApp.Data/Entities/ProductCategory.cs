@@ -45,8 +45,6 @@ namespace TeduCoreApp.Data.Entities
         [Required]
         public int? ParentId { set; get; }
 
-        [Column(TypeName = "nvarchar")]
-
         public int CategoryId { get; set; }
 
         public string Image { get; set; }
@@ -62,15 +60,18 @@ namespace TeduCoreApp.Data.Entities
 
         public Status Status { set; get; }
 
+        [StringLength(255)]
         public string SeoPageTitle { set; get; }
 
-        [Column(TypeName = "varchar")]
+        [Column(TypeName = "varchar(255)")]
         [StringLength(255)]
         [Required]
         public string SeoAlias { set; get; }
 
+        [StringLength(255)]
         public string SeoKeywords { set; get; }
 
+        [StringLength(255)]
         public string SeoDescription { set; get; }
 
         public int SortOrder { set; get; }

@@ -6,6 +6,7 @@ using TeduCoreApp.Infrastructure.SharedKernel;
 
 namespace TeduCoreApp.Data.Entities
 {
+    [Table("AdvertistmentPages")]
     public class AdvertistmentPage : DomainEntity<string>
     {
         public string Name { get; set; }

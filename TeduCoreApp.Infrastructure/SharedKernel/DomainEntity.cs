@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace TeduCoreApp.Infrastructure.SharedKernel
+﻿namespace TeduCoreApp.Infrastructure.SharedKernel
 {
     public abstract class DomainEntity<T>
     {

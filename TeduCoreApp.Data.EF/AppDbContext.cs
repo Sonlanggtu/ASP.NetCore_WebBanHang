@@ -2,10 +2,11 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
+using Microsoft.EntityFrameworkCore.Design;
+using Microsoft.Extensions.Configuration;
 using System;
-using System.Collections.Generic;
+using System.IO;
 using System.Linq;
-using System.Text;
 using TeduCoreApp.Data.EF.Configurations;
 using TeduCoreApp.Data.EF.Extensions;
 using TeduCoreApp.Data.Entities;
@@ -79,11 +80,12 @@ namespace TeduCoreApp.Data.EF
             builder.AddConfiguration(new BlogTagConfiguration());
             builder.AddConfiguration(new ContactDetailConfiguration());
             builder.AddConfiguration(new FooterConfiguration());
-            builder.AddConfiguration(new PageConfiguration());
-            builder.AddConfiguration(new FooterConfiguration());
             builder.AddConfiguration(new ProductTagConfiguration());
             builder.AddConfiguration(new SystemConfigConfiguration());
             builder.AddConfiguration(new AdvertistmentPositionConfiguration());
+            builder.AddConfiguration(new AdvertistmentPageConfiguration());
+            builder.AddConfiguration(new PermissionConfiguration());
+            builder.AddConfiguration(new FunctionConfiguration());
 
             base.OnModelCreating(builder);
         }
@@ -106,6 +108,20 @@ namespace TeduCoreApp.Data.EF
                 }
             }
             return base.SaveChanges();
+        }
+
+        public class DesignTimeDbContextFactory : IDesignTimeDbContextFactory<AppDbContext>
+        {
+            public AppDbContext CreateDbContext(string[] args)
+            {
+                IConfiguration configuration = new ConfigurationBuilder()
+                    .SetBasePath(Directory.GetCurrentDirectory())
+                    .AddJsonFile("appsettings.json").Build();
+                var builder = new DbContextOptionsBuilder<AppDbContext>();
+                var connectionString = configuration.GetConnectionString("DefaultConnection");
+                builder.UseSqlServer(connectionString);
+                return new AppDbContext(builder.Options);
+            }
         }
     }
 }
