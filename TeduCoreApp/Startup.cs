@@ -2,6 +2,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Routing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -103,14 +104,32 @@ namespace TeduCoreApp
             app.UseRouting();
 
             app.UseAuthentication();
+
             app.UseAuthorization();
+
+            //app.UseMvc(router =>
+            //{
+            //    router.MapRoute(
+            //        name: "default",
+            //        template: "{controller = Home}/{action = Index}/{id?}"
+            //        );
+            //    router.MapRoute(name: "areaRoute",
+            //        template: "{area:exists}/{controller=Home}/{action:Index}/{id?}");
+            //});
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
-                endpoints.MapRazorPages();
+                    pattern: "{controller=Home}/{action}",
+                    defaults: new { action = "Index" });        
+
+            //   endpoints.MapRazorPages();
+            endpoints.MapControllerRoute(
+                    name: "areaRoute",
+                    pattern: "{area:exists}/{controller=Home}/{action}",
+                    defaults: new { action = "Index" });
+                //   endpoints.MapRazorPages();
             });
 
         }
