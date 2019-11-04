@@ -3,17 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29424.173
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeduCoreApp", "TeduCoreApp.csproj", "{2B62CF0A-3D9F-4272-9958-77159C228DAA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeduCoreApp", "TeduCoreApp.csproj", "{2B62CF0A-3D9F-4272-9958-77159C228DAA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeduCoreApp.Application", "..\TeduCoreApp.Application\TeduCoreApp.Application.csproj", "{C2D8EFE9-2D76-4015-A9D9-40E4114E99B9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeduCoreApp.Application", "..\TeduCoreApp.Application\TeduCoreApp.Application.csproj", "{C2D8EFE9-2D76-4015-A9D9-40E4114E99B9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeduCoreApp.Data.EF", "..\TeduCoreApp.Data.EF\TeduCoreApp.Data.EF.csproj", "{BACAF338-91CC-496D-87DB-82DC6FD092F9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeduCoreApp.Data.EF", "..\TeduCoreApp.Data.EF\TeduCoreApp.Data.EF.csproj", "{BACAF338-91CC-496D-87DB-82DC6FD092F9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeduCoreApp.Data", "..\TeduCoreApp.Data\TeduCoreApp.Data.csproj", "{3B8CE630-B5D8-4623-A7DD-C733384A0835}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeduCoreApp.Data", "..\TeduCoreApp.Data\TeduCoreApp.Data.csproj", "{3B8CE630-B5D8-4623-A7DD-C733384A0835}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeduCoreApp.Utilities", "..\TeduCoreApp.Utilities\TeduCoreApp.Utilities.csproj", "{4AE0277E-AFC5-493E-BFE6-770336C8239B}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeduCoreApp.Infrastructure", "..\TeduCoreApp.Infrastructure\TeduCoreApp.Infrastructure.csproj", "{68F6119D-C2A1-4CFB-98BC-93138A011562}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeduCoreApp.Infrastructure", "..\TeduCoreApp.Infrastructure\TeduCoreApp.Infrastructure.csproj", "{68F6119D-C2A1-4CFB-98BC-93138A011562}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Presentation", "1 - Presentation", "{30C9963B-6ECB-4CBE-98C6-10E5EE3E2F70}"
 EndProject
@@ -25,7 +23,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Infrastracture", "4 - I
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5 - UnitTest", "5 - UnitTest", "{FD0B4BE8-8F6A-4C38-B288-8FCC24C6B5C0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeduCoreApp.Application.Test", "..\TeduCoreApp.Application.Test\TeduCoreApp.Application.Test.csproj", "{539AA6E0-766B-4E40-9BC8-6456C0216E6A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeduCoreApp.Application.Test", "..\TeduCoreApp.Application.Test\TeduCoreApp.Application.Test.csproj", "{539AA6E0-766B-4E40-9BC8-6456C0216E6A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeduCoreApp.Utilities", "..\TeduCoreApp.Utilities\TeduCoreApp.Utilities.csproj", "{652F8A6B-941A-4F22-83D3-CD8212D53511}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -49,10 +49,6 @@ Global
 		{3B8CE630-B5D8-4623-A7DD-C733384A0835}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3B8CE630-B5D8-4623-A7DD-C733384A0835}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3B8CE630-B5D8-4623-A7DD-C733384A0835}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4AE0277E-AFC5-493E-BFE6-770336C8239B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4AE0277E-AFC5-493E-BFE6-770336C8239B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4AE0277E-AFC5-493E-BFE6-770336C8239B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4AE0277E-AFC5-493E-BFE6-770336C8239B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{68F6119D-C2A1-4CFB-98BC-93138A011562}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{68F6119D-C2A1-4CFB-98BC-93138A011562}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{68F6119D-C2A1-4CFB-98BC-93138A011562}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -61,6 +57,10 @@ Global
 		{539AA6E0-766B-4E40-9BC8-6456C0216E6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{539AA6E0-766B-4E40-9BC8-6456C0216E6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{539AA6E0-766B-4E40-9BC8-6456C0216E6A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{652F8A6B-941A-4F22-83D3-CD8212D53511}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{652F8A6B-941A-4F22-83D3-CD8212D53511}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{652F8A6B-941A-4F22-83D3-CD8212D53511}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{652F8A6B-941A-4F22-83D3-CD8212D53511}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -70,9 +70,9 @@ Global
 		{C2D8EFE9-2D76-4015-A9D9-40E4114E99B9} = {017B1CCE-C430-4E0D-AB1D-2F095E9E150A}
 		{BACAF338-91CC-496D-87DB-82DC6FD092F9} = {EA340007-23B7-451E-9757-AB45D96D1F37}
 		{3B8CE630-B5D8-4623-A7DD-C733384A0835} = {EA340007-23B7-451E-9757-AB45D96D1F37}
-		{4AE0277E-AFC5-493E-BFE6-770336C8239B} = {D5930351-3935-4984-BF11-969904BC9F55}
 		{68F6119D-C2A1-4CFB-98BC-93138A011562} = {D5930351-3935-4984-BF11-969904BC9F55}
 		{539AA6E0-766B-4E40-9BC8-6456C0216E6A} = {FD0B4BE8-8F6A-4C38-B288-8FCC24C6B5C0}
+		{652F8A6B-941A-4F22-83D3-CD8212D53511} = {D5930351-3935-4984-BF11-969904BC9F55}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {43B90841-7187-4B97-B29D-5B542E9EE9C5}

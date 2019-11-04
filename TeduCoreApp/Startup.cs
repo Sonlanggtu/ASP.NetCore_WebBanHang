@@ -66,7 +66,8 @@ namespace TeduCoreApp
             // Add AutoMapper
             services.AddAutoMapper();
             services.AddSingleton(Mapper.Configuration);
-            services.AddScoped<IMapper>(sp => new Mapper(sp.GetRequiredService<AutoMapper.IConfigurationProvider>(), sp.GetServices));
+            services.AddScoped<IMapper>(sp => new Mapper(sp.GetRequiredService
+                <AutoMapper.IConfigurationProvider>(), sp.GetServices));
 
             // Add Service && Repository
             services.AddTransient<IUnitOfWork, EFUnitOfWork>();
